@@ -22,14 +22,12 @@ button {
 }
 
 .container {
-  width: 500px;
-  height: 500px;
+  width: 800px;
+  height: 550px;
   padding: 50px 25px;
   box-shadow: 5px 5px 12px rgba(0,0,0,.2);
   border-radius: 5px;
   background-color: white;
-
-
 }
 
 .controls {
@@ -38,18 +36,20 @@ button {
   margin-bottom: 25px;
 }
 
-.controls label {
+.input-container {
   font-size: .8em;
+  position: relative;
 }
 
 .tags-field {
-  border: 1px solid black;
+  border: 1px solid rgba(207, 207, 207, 0.753);
   width: 100%;
   min-height: 100px;
   border-radius: 3px;
   padding: 10px;
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 5px;
 }
 
 .tag {
@@ -69,6 +69,7 @@ button {
   height: 70%;
   cursor: pointer;
   opacity: .8;
+  user-select: none;
 }
 
 .tag img:hover {
@@ -78,4 +79,30 @@ button {
 
 .tag span {
   margin-right: 7px;
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tooltip {
+  position: absolute;
+  font-size: .7em;
+  top: -18px;
+  left: 0px;
+  color: red;
+  display: none;
+}
+
+.amount-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.amount-of-symbols {
+  font-size: .6em;
+  color: rgb(146, 146, 146);
+}
+
+.readonly-container {
+  font-size: .8em;
 }

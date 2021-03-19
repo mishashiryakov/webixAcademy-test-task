@@ -2,8 +2,9 @@ import closeImg from '../assets/images/close.png';
 
 
 class TagHTMLElement {
-  constructor(tagTitle) {
+  constructor(tagTitle, deleteTagFunc) {
     this.tagTitle = tagTitle;
+    this.deleteTagFunc = deleteTagFunc;
   }
 
   createTag() {
@@ -16,6 +17,7 @@ class TagHTMLElement {
     this.img = document.createElement('img');
     this.img.src = closeImg;
     this.img.alt = 'close-icon';
+    this.img.onclick =  () => this.deleteTagFunc(this.tagTitle);
     this.tag.appendChild(this.tagTitleSpan);
     this.tag.appendChild(this.img);
   }
