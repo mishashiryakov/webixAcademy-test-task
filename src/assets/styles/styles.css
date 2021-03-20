@@ -39,6 +39,11 @@ button {
 .input-container {
   font-size: .8em;
   position: relative;
+  width: 60%;
+}
+
+#input-tag-title {
+  width: 100%;
 }
 
 .tags-field {

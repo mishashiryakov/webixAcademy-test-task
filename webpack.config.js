@@ -29,7 +29,8 @@ const optimization = () => {
 
 const babelOptions = preset => {
   const opts = {
-    presets: ['@babel/preset-env']
+    presets: ['@babel/preset-env'],
+    plugins: ['@babel/plugin-proposal-class-properties'],
   }
 
   if (preset) {
@@ -118,7 +119,7 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
-          options: babelOptions('@babel/preset-react')
+          options: babelOptions('@babel/preset-react'),
         }
       }
     ]

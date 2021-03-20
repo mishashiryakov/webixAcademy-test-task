@@ -1,32 +1,30 @@
 import closeImg from '../assets/images/close.png';
+import { element } from '../utils/element';
+import Component from './Component';
 
-
-class TagHTMLElement {
+class TagHTMLElement extends Component {
   constructor(tagTitle, deleteTagFunc) {
+    super('tag');
     this.tagTitle = tagTitle;
     this.deleteTagFunc = deleteTagFunc;
+
+    this.render();
   }
 
-  createTag() {
-    this.tag = document.createElement('div');
-    this.tag.className = 'tag';
+  render = () => {
+    this.tagTitleSpan = element('span', {
+      innerHTML: `${this.tagTitle}`,
+    });
 
-    this.tagTitleSpan = document.createElement('span');
-    this.tagTitleSpan.innerHTML = `${this.tagTitle}`
-
-    this.img = document.createElement('img');
-    this.img.src = closeImg;
-    this.img.alt = 'close-icon';
-    this.img.onclick =  () => this.deleteTagFunc(this.tagTitle);
-    this.tag.appendChild(this.tagTitleSpan);
-    this.tag.appendChild(this.img);
+    this.img = element('img', {
+      src: closeImg,
+      alt:'close-icon',
+      onclick: () => this.deleteTagFunc(this.tagTitle)
+    });
+    
+    this.container.appendChild(this.tagTitleSpan);
+    this.container.appendChild(this.img);
   }
-
-  render() {
-    this.createTag();
-    return this.tag;
-  }
-
 }
 
 export default TagHTMLElement;
