@@ -14,12 +14,11 @@ export default class TagList {
     numberOfSymbolsInTagsArray = 0;
     readonlyMode = false;
 
-    constructor({useLocalStore, maxSymbolsLength} = {useLocalStore: true, maxSymbolsLength: 100}) {
+    constructor({useLocalStore, maxSymbolsLength} = {}) {
         this._tagsSet = (useLocalStore && tagLocalStore) 
             ? new Set(JSON.parse(tagLocalStore)) 
             : new Set(); 
-
-        this.maxSymbolsLength = maxSymbolsLength;
+        this.maxSymbolsLength = maxSymbolsLength || 100;
     }
 
     get totalSymbols() {
