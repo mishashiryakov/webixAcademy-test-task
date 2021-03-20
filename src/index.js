@@ -24,7 +24,7 @@ class TagCreationComponent {
     
       case OPERATION_STATUSES.SUCCESS:
         this.view.clearTagsField();
-        this.tagList.tags.map(this.view.appendTag);
+        this.tagList.tags.forEach(this.view.appendTag);
         this.view.updateSymbolCountSpan(this.tagList.totalSymbols, MAX_NUMBER_OF_SYMBOLS);
         break;
     }
@@ -57,6 +57,7 @@ class TagCreationComponent {
       case OPERATION_STATUSES.NEW_TAG_LIST:
         this.view.clearTagsField();
         this.tagList.tags.forEach(this.view.appendTag);
+        this.view.updateSymbolCountSpan(this.tagList.totalSymbols, MAX_NUMBER_OF_SYMBOLS);
         this.view.controls.clearInput();
         break;
     
@@ -77,7 +78,7 @@ class TagCreationComponent {
 
     window.addEventListener('unload', this.tagList.updateLocalStore);
 
-    document.addEventListener('keyup', event => {
+    document.querySelector('main').addEventListener('keyup', event => {
       if (event.code == 'Enter') {
         this.addTag();
       }

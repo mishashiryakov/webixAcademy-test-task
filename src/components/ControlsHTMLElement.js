@@ -5,12 +5,10 @@ class ControlsHTMLElement extends Component {
 
   constructor({
     onAdd, 
-    onChange, 
     onToggle
   }) {
     super('controls');
     this.onAdd = onAdd;
-    this.onChange = onChange;
     this.onToggle = onToggle;
     this.render();
   }
@@ -19,7 +17,6 @@ class ControlsHTMLElement extends Component {
     this.input = element('input', {
       type: 'text',
       id: 'input-tag-title',
-      onchange: this.onChange || null
     });
 
     this.tooltip = element('span', {

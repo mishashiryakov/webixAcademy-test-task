@@ -8,7 +8,6 @@ export default class AppView extends Component {
 
     constructor({
         onAdd, 
-        onChange, 
         onToggle,
         onDelete
       }) {
@@ -17,7 +16,6 @@ export default class AppView extends Component {
         this.onDelete = onDelete;
         this.controls = new ControlsHTMLElement({
             onAdd, 
-            onChange, 
             onToggle,
           })
         this.render();
@@ -72,6 +70,5 @@ export default class AppView extends Component {
     
         this.amountOfSymbolsContainer.appendChild(this.totalSymbolsSpan);
         this.container.append(this.controls.container, this.tagsField, this.amountOfSymbolsContainer);
-      }
-
+    }
 }

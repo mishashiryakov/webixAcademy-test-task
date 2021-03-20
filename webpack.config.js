@@ -114,14 +114,6 @@ module.exports = {
           options: babelOptions()
         }
       },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: babelOptions('@babel/preset-react'),
-        }
-      }
     ]
   }
 }

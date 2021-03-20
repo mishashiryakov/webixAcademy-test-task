@@ -14,24 +14,24 @@ export default class TagList {
     numberOfSymbolsInTagsArray = 0;
     readonlyMode = false;
 
-    constructor({useLocalStore, maxSymbolsLength} = {}) {
+    constructor({useLocalStore, maxSymbolsLength} = {useLocalStore: true, maxSymbolsLength: 100}) {
         this._tagsSet = (useLocalStore && tagLocalStore) 
             ? new Set(JSON.parse(tagLocalStore)) 
             : new Set(); 
 
-        this.maxSymbolsLength = maxSymbolsLength || 100;
+        this.maxSymbolsLength = maxSymbolsLength;
     }
 
     get totalSymbols() {
         return this.tags.join('').length;
     }
 
-    get tags() {
-        return Array.from(this._tagsSet);
-    }
-
     get isMaxLength() {
         return this.totalSymbols >= this.maxSymbolsLength;
+    }
+
+    get tags() {
+        return Array.from(this._tagsSet);
     }
 
     set tags(tagArray) {
@@ -70,7 +70,6 @@ export default class TagList {
         }
 
         this._tagsSet.add(tag);
-
 
         return OPERATION_STATUSES.SUCCESS;
     }
