@@ -52,12 +52,6 @@ export default class TagList {
     add = (tag) => {
         if(this.readonlyMode) return OPERATION_STATUSES.READ_ONLY;
 
-        if (this.isMaxLength) return OPERATION_STATUSES.MAX_LENGTH;
-
-        if(!tag.length) return OPERATION_STATUSES.EMPTY_TAG;
-
-        if (this._tagsSet.has(tag)) return OPERATION_STATUSES.ALREADY_EXISTS;
-
         if (tag.includes(',')) {
             const newTagList = tag
                 .split(',')
@@ -67,6 +61,12 @@ export default class TagList {
             this.tags = newTagList;
             return OPERATION_STATUSES.NEW_TAG_LIST;
         }
+
+        if (this.isMaxLength) return OPERATION_STATUSES.MAX_LENGTH;
+
+        if(!tag.length) return OPERATION_STATUSES.EMPTY_TAG;
+
+        if (this._tagsSet.has(tag)) return OPERATION_STATUSES.ALREADY_EXISTS;
 
         this._tagsSet.add(tag);
 
